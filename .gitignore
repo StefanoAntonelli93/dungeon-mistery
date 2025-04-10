@@ -1,0 +1,24 @@
+# Maven build output
+/target/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# NetBeans
+nbproject/private/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Log file
+*.log
+
+# File temporanei
+*.tmp
