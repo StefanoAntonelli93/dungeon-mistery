@@ -38,7 +38,7 @@ public class Hero extends GameCharacter {
     }
     // overload attack()
     public void attack(Monster monster) {
-        System.out.println( name + " attacks " + monster.getName());
+        System.out.println( name + " attacks: " + monster.getName());
     }
 
 }

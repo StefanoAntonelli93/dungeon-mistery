@@ -3,6 +3,7 @@ package com.progettoRogueLike;
 import com.progettoRogueLike.model.CharacterInventory;
 import com.progettoRogueLike.model.Hero;
 import com.progettoRogueLike.model.Monster;
+import com.progettoRogueLike.model.Room;
 
 public class App
 {
@@ -10,10 +11,10 @@ public class App
     {
         System.out.println( "Welcome to Dungeon Mistery!" );
 
-        Hero hero = new Hero();
-        hero.setName( "Arthur" );
-        hero.setHp( 100 );
-        hero.getStatus();
+        Hero arthur = new Hero();
+        arthur.setName( "Arthur" );
+        arthur.setHp( 100 );
+        arthur.getStatus();
 
         Monster valgavoth = new Monster();
         valgavoth.setName( "Valgavoth" );
@@ -21,17 +22,38 @@ public class App
         valgavoth.getStatus();
 
         valgavoth.move();
-        hero.move();
-        hero.attack( valgavoth );
+        arthur.move();
+        arthur.attack( valgavoth );
+        valgavoth.attack( arthur );
 
         CharacterInventory inventory = new CharacterInventory();
         inventory.addItems("potion");
+        inventory.addItems("sword");
+        inventory.addItems("shield");
         inventory.addItems("apple");
-        inventory.addItems("orange");
-        inventory.addItems("grape");
         inventory.addItems("pearl");
         inventory.addItems("water");
         inventory.displayInventory();
+
+        Room ingresso = new Room();
+        ingresso.setDescription( "Ingresso" );
+        Room corridoioA = new Room();
+        corridoioA.setDescription( "Corrido A" );
+        Room salaNord = new Room();
+        salaNord.setDescription( "Sala Nord" );
+        Room salaSud = new Room();
+        salaSud.setDescription( "Sala Sud" );
+        Room salaTesoro = new Room();
+        salaTesoro.setDescription( "Salan del Tesoro" );
+        Room salaBossFight = new Room();
+        salaBossFight.setDescription( "Sala Boss Fight" );
+        Room uscita = new Room();
+        uscita.setDescription( "Uscita" );
+
+        // bidirectional arcs for room connections
+        ingresso.connectRoom( corridoioA );
+        ingresso.printConnections();
+
 
     }
 }

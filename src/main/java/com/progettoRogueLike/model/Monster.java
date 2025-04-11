@@ -18,7 +18,15 @@ public class Monster extends GameCharacter {
 
     @Override
     public void move() {
-        System.out.println(name+ " move!");
+        System.out.println(name + " move!");
+    }
+
+    @Override
+    public void attack(GameCharacter character) {
+        System.out.println(name + " attacks!");
+    }
+    public void attack(Hero hero) {
+        System.out.println(name + " attacks: " + hero.getName());
     }
 
 }
