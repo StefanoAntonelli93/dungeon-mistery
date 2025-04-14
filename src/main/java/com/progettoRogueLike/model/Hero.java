@@ -1,17 +1,14 @@
 package com.progettoRogueLike.model;
 
 import enums.Direction;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.Stack;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@SuperBuilder
 public class Hero extends GameCharacter {
 
     private int level;
@@ -54,7 +51,7 @@ public class Hero extends GameCharacter {
         if(nextRoom != null) {
             roomsHistory.push(nextRoom);
             currentRoom = nextRoom;
-            System.out.println("Ti muovi a " + direction + " vai dentro: " + nextRoom.getName());
+            System.out.println( name + " cammina verso " + direction + " ed entra in : " + nextRoom.getName());
         } else {
             System.out.println("Nessuna stanza trovata in direzione " + direction);
         }

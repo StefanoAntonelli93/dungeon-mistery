@@ -1,14 +1,16 @@
 package com.progettoRogueLike.model;
 
-import enums.Direction;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.SuperBuilder;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
+@SuperBuilder
 public class Monster extends GameCharacter {
 
     // id name hp
+    private Room currentRoom;
 
     @Override
     public void getStatus() {
@@ -16,12 +18,7 @@ public class Monster extends GameCharacter {
                 "Name: " + name +
                 ", HP: " + hp);
     }
-
-    @Override
-    public void move(Direction direction) {
-        System.out.println(name + " move!");
-    }
-
+    
     @Override
     public void attack(GameCharacter character) {
         System.out.println(name + " attacks!");

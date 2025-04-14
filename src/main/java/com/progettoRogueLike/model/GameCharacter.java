@@ -3,7 +3,9 @@ package com.progettoRogueLike.model;
 import com.progettoRogueLike.interfaces.CharacterAction;
 import enums.Direction;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
+@SuperBuilder
 @Data
 public abstract class GameCharacter implements CharacterAction {
     // visible only by class in same package

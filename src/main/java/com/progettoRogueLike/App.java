@@ -26,12 +26,16 @@ public class App
         if (arthur.getCurrentRoom().getId() == ingresso.getId()) {
             System.out.println("Arthur si trova in: " + ingresso.getName());
         }
-
-        Monster valgavoth = CharacterFactory.initMonster();
-        valgavoth.getStatus();
-
-        valgavoth.move(Direction.EAST);
         arthur.move(Direction.EAST);
+
+        Monster valgavoth = CharacterFactory.initMonster(dungeon1);
+        valgavoth.getStatus();
+        if(valgavoth.getCurrentRoom().getId() == ingresso.getId()) {
+            System.out.println("Valgavoth si trova in: " + ingresso.getName());
+        } else {
+            System.out.println(valgavoth.getName() + " non si trova qui: " + ingresso.getName() );
+        }
+
         arthur.attack( valgavoth );
         valgavoth.attack( arthur );
 
