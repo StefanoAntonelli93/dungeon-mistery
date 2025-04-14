@@ -1,34 +1,29 @@
 package com.progettoRogueLike.model;
 
+import enums.Direction;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Room {
     private Integer id;
-    private String description;
-
-    List<Room> adjacentRooms = new ArrayList<>();
-
-    // connection bidirectional A-B B-A
-    public void connectRoom(Room room) {
-        if (!this.adjacentRooms.contains(room)) {
-            this.adjacentRooms.add(room);
-        }
-        if (!room.adjacentRooms.contains(this)) {
-            room.adjacentRooms.add(this);
+    private String name;
+    @ToString.Exclude
+    Map<Direction, Room> connections = new HashMap<>();
+    public void setConnection(Direction direction, Room room) {
+        connections.put(direction, room);
+        if(room != null) {
+            room.getConnections().put(direction.getOpposite(), this);
         }
     }
-    // print rooms connection
-    public void printConnections() {
-        for (Room room : adjacentRooms) {
-            System.out.println(this.description + " djacents to: " + room.description);
-        }
+    public Room getRoom(Direction direction) {
+        return connections.get(direction);
     }
 }

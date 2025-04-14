@@ -1,5 +1,6 @@
 package com.progettoRogueLike.model;
 
+import enums.Direction;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -17,7 +18,7 @@ public class Monster extends GameCharacter {
     }
 
     @Override
-    public void move() {
+    public void move(Direction direction) {
         System.out.println(name + " move!");
     }
 

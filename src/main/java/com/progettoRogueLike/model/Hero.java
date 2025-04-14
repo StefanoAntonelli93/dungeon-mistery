@@ -1,20 +1,26 @@
 package com.progettoRogueLike.model;
 
+import enums.Direction;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.Stack;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Hero extends GameCharacter {
 
     private int level;
     private int strength;
     private int dexterity;
     private int defense;
+
+    private Room currentRoom;
+    private Stack<Room> roomsHistory = new Stack<>();
 
     @Override
     public void getStatus() {
@@ -27,9 +33,31 @@ public class Hero extends GameCharacter {
                 ", Defense: " + defense);
     }
 
+    public void updateCurrentRoomById(Dungeon dungeon, int roomId){
+        Room newRoom = dungeon.getRoomId(roomId);
+        if(newRoom != null){
+            roomsHistory.push(currentRoom);
+            currentRoom = newRoom;
+            System.out.println(this.name + " è nella stanza " + currentRoom.getName());
+        } else {
+            System.out.println(" non esiste stanza con id: " + roomId);
+        }
+    }
+
     @Override
-    public void move() {
-        System.out.println( name + " move!");
+    public void move(Direction direction) {
+        if (currentRoom == null) {
+            System.out.println("La stanza corrente non è stata inizializzata.");
+            return;
+        }
+        Room nextRoom = currentRoom.getRoom(direction);
+        if(nextRoom != null) {
+            roomsHistory.push(nextRoom);
+            currentRoom = nextRoom;
+            System.out.println("Ti muovi a " + direction + " vai dentro: " + nextRoom.getName());
+        } else {
+            System.out.println("Nessuna stanza trovata in direzione " + direction);
+        }
     }
 
     @Override

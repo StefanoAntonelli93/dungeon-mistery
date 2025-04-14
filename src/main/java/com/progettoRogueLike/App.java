@@ -1,9 +1,10 @@
 package com.progettoRogueLike;
 
-import com.progettoRogueLike.model.CharacterInventory;
-import com.progettoRogueLike.model.Hero;
-import com.progettoRogueLike.model.Monster;
-import com.progettoRogueLike.model.Room;
+import com.progettoRogueLike.Factory.CharacterFactory;
+import com.progettoRogueLike.Factory.InventoryFactory;
+import com.progettoRogueLike.Factory.RoomFactory;
+import com.progettoRogueLike.model.*;
+import enums.Direction;
 
 public class App
 {
@@ -11,49 +12,31 @@ public class App
     {
         System.out.println( "Welcome to Dungeon Mistery!" );
 
-        Hero arthur = new Hero();
-        arthur.setName( "Arthur" );
-        arthur.setHp( 100 );
-        arthur.getStatus();
+        Dungeon dungeon1 = RoomFactory.initDungeon();
+        Room ingresso = dungeon1.getRoomId(1);
+        Room nextRoom = ingresso.getRoom(Direction.EAST);
+        if(nextRoom != null) {
+            System.out.println(ingresso.getName() + " collegato a Est con: "+ nextRoom.getName());
+        } else {
+            System.out.println("Nessuna stanza a Est..");
+        }
 
-        Monster valgavoth = new Monster();
-        valgavoth.setName( "Valgavoth" );
-        valgavoth.setHp( 200 );
+        Hero arthur = CharacterFactory.initHero(dungeon1);
+        arthur.getStatus();
+        if (arthur.getCurrentRoom().getId() == ingresso.getId()) {
+            System.out.println("Arthur si trova in: " + ingresso.getName());
+        }
+
+        Monster valgavoth = CharacterFactory.initMonster();
         valgavoth.getStatus();
 
-        valgavoth.move();
-        arthur.move();
+        valgavoth.move(Direction.EAST);
+        arthur.move(Direction.EAST);
         arthur.attack( valgavoth );
         valgavoth.attack( arthur );
 
-        CharacterInventory inventory = new CharacterInventory();
-        inventory.addItems("potion");
-        inventory.addItems("sword");
-        inventory.addItems("shield");
-        inventory.addItems("apple");
-        inventory.addItems("pearl");
-        inventory.addItems("water");
-        inventory.displayInventory();
-
-        Room ingresso = new Room();
-        ingresso.setDescription( "Ingresso" );
-        Room corridoioA = new Room();
-        corridoioA.setDescription( "Corrido A" );
-        Room salaNord = new Room();
-        salaNord.setDescription( "Sala Nord" );
-        Room salaSud = new Room();
-        salaSud.setDescription( "Sala Sud" );
-        Room salaTesoro = new Room();
-        salaTesoro.setDescription( "Salan del Tesoro" );
-        Room salaBossFight = new Room();
-        salaBossFight.setDescription( "Sala Boss Fight" );
-        Room uscita = new Room();
-        uscita.setDescription( "Uscita" );
-
-        // bidirectional arcs for room connections
-        ingresso.connectRoom( corridoioA );
-        ingresso.printConnections();
-
+        CharacterInventory arthurInventory = InventoryFactory.initCharacterInventory();
+        arthurInventory.displayInventory();
 
     }
 }

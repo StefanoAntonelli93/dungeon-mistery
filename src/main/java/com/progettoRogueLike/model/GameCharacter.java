@@ -1,6 +1,7 @@
 package com.progettoRogueLike.model;
 
 import com.progettoRogueLike.interfaces.CharacterAction;
+import enums.Direction;
 import lombok.Data;
 
 @Data
@@ -11,7 +12,7 @@ public abstract class GameCharacter implements CharacterAction {
     protected int hp;
 
     @Override
-    public void move() {}
+    public void move(Direction direction) {}
 
     @Override
     public void use() {}
