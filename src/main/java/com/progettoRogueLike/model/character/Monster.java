@@ -1,5 +1,6 @@
-package com.progettoRogueLike.model;
+package com.progettoRogueLike.model.character;
 
+import com.progettoRogueLike.model.room.Room;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.SuperBuilder;

@@ -1,7 +1,8 @@
 package com.progettoRogueLike.Factory;
 
 import com.progettoRogueLike.model.Dungeon;
-import com.progettoRogueLike.model.Room;
+import com.progettoRogueLike.model.room.CombatRoom;
+import com.progettoRogueLike.model.room.SafeRoom;
 import enums.Direction;
 
 public class RoomFactory {
@@ -9,52 +10,52 @@ public class RoomFactory {
         
         Dungeon dungeon1 = new Dungeon();
 
-        Room ingresso = new Room();
+        SafeRoom ingresso = new SafeRoom();
         ingresso.setName("Ingresso");
         ingresso.setId(1);
         dungeon1.addRoom(ingresso);
 
-        Room corridoioA = new Room();
+        SafeRoom corridoioA = new SafeRoom();
         corridoioA.setName("Corridoio A");
         corridoioA.setId(2);
         dungeon1.addRoom(corridoioA);
 
-        Room corridoioB = new Room();
+        SafeRoom corridoioB = new SafeRoom();
         corridoioB.setName("Corridoio B");
         corridoioB.setId(3);
         dungeon1.addRoom(corridoioB);
 
-        Room corridoioC = new Room();
+        SafeRoom corridoioC = new SafeRoom();
         corridoioC.setName("Corridoio C");
         corridoioC.setId(4);
         dungeon1.addRoom(corridoioC);
 
-        Room salaTesoro = new Room();
+        CombatRoom salaTesoro = new CombatRoom();
         salaTesoro.setName("Sala del Tesoro");
         salaTesoro.setId(5);
         dungeon1.addRoom(salaTesoro);
 
-        Room cucine = new Room();
+        SafeRoom cucine = new SafeRoom();
         cucine.setName("Cucine");
         cucine.setId(6);
         dungeon1.addRoom(cucine);
 
-        Room salaGrande = new Room();
+        CombatRoom salaGrande = new CombatRoom();
         salaGrande.setName("Sala Grande");
         salaGrande.setId(7);
         dungeon1.addRoom(salaGrande);
 
-        Room salaTrono = new Room();
+        CombatRoom salaTrono = new CombatRoom();
         salaTrono.setName("Sala del Trono");
         salaTrono.setId(8);
         dungeon1.addRoom(salaTrono);
 
-        Room prigione = new Room();
+        CombatRoom prigione = new CombatRoom();
         prigione.setName("Prigione");
         prigione.setId(9);
         dungeon1.addRoom(prigione);
 
-        Room tanaTroll = new Room();
+        CombatRoom tanaTroll = new CombatRoom();
         prigione.setName("Tana del Troll ");
         prigione.setId(10);
         dungeon1.addRoom(tanaTroll);

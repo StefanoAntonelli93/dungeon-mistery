@@ -4,6 +4,9 @@ import com.progettoRogueLike.Factory.CharacterFactory;
 import com.progettoRogueLike.Factory.InventoryFactory;
 import com.progettoRogueLike.Factory.RoomFactory;
 import com.progettoRogueLike.model.*;
+import com.progettoRogueLike.model.character.Hero;
+import com.progettoRogueLike.model.character.Monster;
+import com.progettoRogueLike.model.room.Room;
 import enums.Direction;
 
 public class App
@@ -27,6 +30,8 @@ public class App
             System.out.println("Arthur si trova in: " + ingresso.getName());
         }
         arthur.move(Direction.EAST);
+        ingresso.enter(arthur, ingresso);
+
 
         Monster valgavoth = CharacterFactory.initMonster(dungeon1);
         valgavoth.getStatus();

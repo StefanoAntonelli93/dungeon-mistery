@@ -1,5 +1,7 @@
-package com.progettoRogueLike.model;
+package com.progettoRogueLike.model.character;
 
+import com.progettoRogueLike.model.Dungeon;
+import com.progettoRogueLike.model.room.Room;
 import enums.Direction;
 import lombok.*;
 import lombok.experimental.SuperBuilder;

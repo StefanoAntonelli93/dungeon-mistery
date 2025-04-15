@@ -1,5 +1,6 @@
 package com.progettoRogueLike.model;
 
+import com.progettoRogueLike.model.room.Room;
 import lombok.Data;
 import java.util.HashMap;
 import java.util.Map;

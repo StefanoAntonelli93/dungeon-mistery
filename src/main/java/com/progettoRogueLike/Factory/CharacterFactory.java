@@ -1,9 +1,9 @@
 package com.progettoRogueLike.Factory;
 
 import com.progettoRogueLike.model.Dungeon;
-import com.progettoRogueLike.model.Hero;
-import com.progettoRogueLike.model.Monster;
-import com.progettoRogueLike.model.Room;
+import com.progettoRogueLike.model.character.Hero;
+import com.progettoRogueLike.model.character.Monster;
+import com.progettoRogueLike.model.room.Room;
 
 import java.util.Stack;
 

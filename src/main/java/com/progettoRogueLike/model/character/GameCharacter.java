@@ -1,4 +1,4 @@
-package com.progettoRogueLike.model;
+package com.progettoRogueLike.model.character;
 
 import com.progettoRogueLike.interfaces.CharacterAction;
 import enums.Direction;
