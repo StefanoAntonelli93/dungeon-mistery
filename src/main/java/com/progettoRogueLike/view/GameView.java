@@ -4,7 +4,6 @@ import com.progettoRogueLike.controller.GameController;
 import com.progettoRogueLike.enums.Direction;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class GameView {
     private final GameController controller;
@@ -22,7 +21,9 @@ public class GameView {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             // Pannello principale con un messaggio
-            messageLabel = new JLabel("Benvenuto Eroe!", SwingConstants.CENTER);
+            messageLabel = new JLabel("Benvenuto Eroe..." +
+                    "ti trovi all'ingresso del Dungeon... " +
+                    "inizia a muoverti o morirai...", SwingConstants.CENTER);
             messageLabel.setFont(new Font("Arial", Font.BOLD, 16));
             frame.getContentPane().add(messageLabel, BorderLayout.CENTER);
 
@@ -31,7 +32,7 @@ public class GameView {
             eastButton.addActionListener(e -> controller.moveHero(Direction.EAST));
             frame.getContentPane().add(eastButton, BorderLayout.SOUTH);
 
-            frame.setSize(400, 300);
+            frame.setSize(800, 500);
             frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         });

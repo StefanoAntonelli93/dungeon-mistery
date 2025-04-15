@@ -31,6 +31,6 @@ public class Room implements RoomCategory {
 
     @Override
     public void enter(Hero hero, Room room){
-        System.out.println("Sei entrato in una safe room");
+        System.out.println("Sei entrato in una room");
     }
 }

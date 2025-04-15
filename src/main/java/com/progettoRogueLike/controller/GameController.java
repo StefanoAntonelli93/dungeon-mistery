@@ -7,10 +7,12 @@ import com.progettoRogueLike.model.Dungeon;
 import com.progettoRogueLike.model.character.Hero;
 import com.progettoRogueLike.model.character.Monster;
 import com.progettoRogueLike.model.room.Room;
+import com.progettoRogueLike.view.GameIntroFrame;
 import com.progettoRogueLike.view.GameView;
 import com.progettoRogueLike.enums.Direction;
 import lombok.Data;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +25,6 @@ public class GameController {
 
     public GameController() {
         initGame();
-        view = new GameView(this);
-        view.init();
     }
 
     // Initialize the game
@@ -39,15 +39,58 @@ public class GameController {
               5,
               1
         );
-        Monster monster = CharacterFactory.initMonster(dungeon,
+        System.out.println(hero.getName() + " è nato dalla Luce");
+        Monster valgavoth = CharacterFactory.initMonster(dungeon,
                 "Valgavoth",
                 200,
                 3
         );
-        monsters.add(monster);
-        System.out.println(monster.getName() + " è nato dalle tenebre ");
+        monsters.add(valgavoth);
+        System.out.println(valgavoth.getName() + " è nato dalle tenebre ");
 
-        // info in console
+        Monster vendel = CharacterFactory.initMonster(dungeon,
+                "Vendel",
+                250,
+                5);
+        monsters.add(vendel);
+        System.out.println(vendel.getName() + " è nato dalle tenebre ");
+
+        // Inventory management
+        InventoryFactory.initCharacterInventory().displayInventory();
+    }
+
+    // Start Intro
+    public void startIntro() {
+        SwingUtilities.invokeLater(() -> {
+            GameIntroFrame introFrame = new GameIntroFrame(this);
+            introFrame.setVisible(true);
+        });
+    }
+
+    // setting hero's name
+    public void setHeroName(String name) {
+        // Se l'eroe non è già stato creato, o se devi aggiornare il nome, operi qui:
+        if (hero == null) {
+            // Inizializza il dungeon se non è già stato fatto
+            dungeon = RoomFactory.initDungeon();
+            hero = CharacterFactory.initHero(dungeon, name, 100, 1, 5, 5, 5, 1);
+        } else {
+            // Se l'eroe esiste già, aggiorna il nome:
+            hero.setName(name);
+        }
+        System.out.println("Nome dell'eroe impostato su: " + name);
+    }
+
+    // start game
+    public void startGameView() {
+        // Avvia la GameView
+        SwingUtilities.invokeLater(() -> {
+            view = new GameView(this);
+            view.init();
+        });
+    }
+
+    public void moveHero(Direction direction) {
         Room ingresso = dungeon.getRoomId(1);
         Room nextRoom = ingresso.getRoom(Direction.EAST);
         if (nextRoom != null) {
@@ -57,30 +100,10 @@ public class GameController {
         }
         hero.getStatus();
         if (hero.getCurrentRoom().getId() == ingresso.getId()) {
-            System.out.println("Ti trovi in: " + ingresso.getName());
+            System.out.println("Player1 in: " + ingresso.getName());
         }
-
-        hero.move(Direction.EAST);
-        ingresso.enter(hero, ingresso);
-
-        monster.getStatus();
-        if (monster.getCurrentRoom().getId() == ingresso.getId()) {
-            System.out.println("Il mostro si trova in: " + ingresso.getName());
-        } else {
-            System.out.println(monster.getName() + " non si trova qui: " + ingresso.getName());
-        }
-
-        hero.attack(monster);
-        monster.attack(hero);
-
-        // Inventory management
-        InventoryFactory.initCharacterInventory().displayInventory();
-    }
-
-    // methods per view
-    public void moveHero(Direction direction) {
         hero.move(direction);
-        view.displayMessage("L'eroe si è mosso verso " + direction.toString());
+        view.displayMessage("Ti trovi ora in: " + ingresso.getName() );
     }
 
 }
