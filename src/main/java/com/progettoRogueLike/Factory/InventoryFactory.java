@@ -5,15 +5,15 @@ import com.progettoRogueLike.model.CharacterInventory;
 public class InventoryFactory {
     public static CharacterInventory initCharacterInventory() {
 
-        CharacterInventory arthurInventory = new CharacterInventory();
-        arthurInventory.addItems("potion");
-        arthurInventory.addItems("sword");
-        arthurInventory.addItems("shield");
-        arthurInventory.addItems("apple");
-        arthurInventory.addItems("pearl");
-        arthurInventory.addItems("water");
+        CharacterInventory playerInventory = new CharacterInventory();
+        playerInventory.addItems("potion");
+        playerInventory.addItems("sword");
+        playerInventory.addItems("shield");
+        playerInventory.addItems("apple");
+        playerInventory.addItems("pearl");
+        playerInventory.addItems("water");
 
-        return arthurInventory;
+        return playerInventory;
 
     }
 }

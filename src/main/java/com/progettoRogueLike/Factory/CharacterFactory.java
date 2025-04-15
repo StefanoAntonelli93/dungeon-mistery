@@ -11,8 +11,8 @@ public class CharacterFactory {
 
     public static Hero initHero(Dungeon dungeon) {
         Room startingRoom = dungeon.getRoomId(1);
-        Hero arthur = Hero.builder()
-                .name("Arthur")
+        Hero player1 = Hero.builder()
+                .name("Player1")
                 .hp(100)
                 .level(1)
                 .strength(10)
@@ -21,7 +21,7 @@ public class CharacterFactory {
                 .currentRoom(startingRoom)
                 .roomsHistory(new Stack<>())
                 .build();
-        return arthur;
+        return player1;
     }
 
     public static Monster initMonster(Dungeon dungeon) {

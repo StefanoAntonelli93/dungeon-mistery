@@ -1,6 +1,5 @@
 package com.progettoRogueLike.model.character;
 
-import com.progettoRogueLike.model.Dungeon;
 import com.progettoRogueLike.model.room.Room;
 import enums.Direction;
 import lombok.*;
@@ -19,7 +18,7 @@ public class Hero extends GameCharacter {
     private int defense;
 
     private Room currentRoom;
-    private Stack<Room> roomsHistory = new Stack<>();
+    private Stack<Room> roomsHistory;
 
     @Override
     public void getStatus() {
@@ -32,16 +31,6 @@ public class Hero extends GameCharacter {
                 ", Defense: " + defense);
     }
 
-    public void updateCurrentRoomById(Dungeon dungeon, int roomId){
-        Room newRoom = dungeon.getRoomId(roomId);
-        if(newRoom != null){
-            roomsHistory.push(currentRoom);
-            currentRoom = newRoom;
-            System.out.println(this.name + " è nella stanza " + currentRoom.getName());
-        } else {
-            System.out.println(" non esiste stanza con id: " + roomId);
-        }
-    }
 
     @Override
     public void move(Direction direction) {
@@ -53,7 +42,7 @@ public class Hero extends GameCharacter {
         if(nextRoom != null) {
             roomsHistory.push(nextRoom);
             currentRoom = nextRoom;
-            System.out.println( name + " cammina verso " + direction + " ed entra in : " + nextRoom.getName());
+            System.out.println( name + " cammini verso " + direction + " ed entri in : " + nextRoom.getName());
         } else {
             System.out.println("Nessuna stanza trovata in direzione " + direction);
         }
