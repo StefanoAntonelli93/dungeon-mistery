@@ -2,7 +2,7 @@ package com.progettoRogueLike.model.room;
 
 import com.progettoRogueLike.interfaces.RoomCategory;
 import com.progettoRogueLike.model.character.Hero;
-import enums.Direction;
+import com.progettoRogueLike.enums.Direction;
 import lombok.*;
 
 import java.util.HashMap;

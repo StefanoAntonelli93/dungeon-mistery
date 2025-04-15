@@ -9,28 +9,41 @@ import java.util.Stack;
 
 public class CharacterFactory {
 
-    public static Hero initHero(Dungeon dungeon) {
-        Room startingRoom = dungeon.getRoomId(1);
-        Hero player1 = Hero.builder()
-                .name("Player1")
-                .hp(100)
-                .level(1)
-                .strength(10)
-                .dexterity(10)
-                .defense(5)
+    public static Hero initHero(
+            Dungeon dungeon,
+            String name,
+            int hp,
+            int level,
+            int strength,
+            int dexterity,
+            int defense,
+            int startingRoomId) {
+        Room startingRoom = dungeon.getRoomId(startingRoomId);
+        Hero hero = Hero.builder()
+                .name(name)
+                .hp(hp)
+                .level(level)
+                .strength(strength)
+                .dexterity(dexterity)
+                .defense(defense)
                 .currentRoom(startingRoom)
                 .roomsHistory(new Stack<>())
                 .build();
-        return player1;
+        return hero;
     }
 
-    public static Monster initMonster(Dungeon dungeon) {
-        Room startingRoom = dungeon.getRoomId(3);
-        Monster valgavoth = Monster.builder()
-                .name("Valgavoth")
-                .hp(200)
+
+    public static Monster initMonster(
+            Dungeon dungeon,
+            String name,
+            int hp,
+            int startingRoomId
+    ) {
+        Room startingRoom = dungeon.getRoomId(startingRoomId);
+        return Monster.builder()
+                .name(name)
+                .hp(hp)
                 .currentRoom(startingRoom)
                 .build();
-        return valgavoth;
     }
 }

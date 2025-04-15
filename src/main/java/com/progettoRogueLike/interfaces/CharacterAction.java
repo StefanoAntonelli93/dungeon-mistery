@@ -1,7 +1,7 @@
 package com.progettoRogueLike.interfaces;
 
 import com.progettoRogueLike.model.character.GameCharacter;
-import enums.Direction;
+import com.progettoRogueLike.enums.Direction;
 
 public interface CharacterAction {
 

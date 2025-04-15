@@ -1,7 +1,7 @@
 package com.progettoRogueLike.model.character;
 
 import com.progettoRogueLike.interfaces.CharacterAction;
-import enums.Direction;
+import com.progettoRogueLike.enums.Direction;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 

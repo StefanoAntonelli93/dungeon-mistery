@@ -1,4 +1,4 @@
-package enums;
+package com.progettoRogueLike.enums;
 
 public enum Direction {
     NORTH, SOUTH, EAST, WEST;

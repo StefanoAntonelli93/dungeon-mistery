@@ -3,7 +3,7 @@ package com.progettoRogueLike.Factory;
 import com.progettoRogueLike.model.Dungeon;
 import com.progettoRogueLike.model.room.CombatRoom;
 import com.progettoRogueLike.model.room.SafeRoom;
-import enums.Direction;
+import com.progettoRogueLike.enums.Direction;
 
 public class RoomFactory {
     public static Dungeon initDungeon() {
