@@ -1,4 +1,4 @@
-package com.progettoRogueLike.Factory;
+package com.progettoRogueLike.factory;
 
 import com.progettoRogueLike.model.CharacterInventory;
 

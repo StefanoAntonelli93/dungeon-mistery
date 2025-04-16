@@ -1,4 +1,4 @@
-package com.progettoRogueLike;
+package com.progettoRogueLike.view;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;

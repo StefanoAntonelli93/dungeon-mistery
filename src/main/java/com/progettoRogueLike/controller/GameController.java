@@ -1,8 +1,8 @@
 package com.progettoRogueLike.controller;
 
-import com.progettoRogueLike.Factory.CharacterFactory;
-import com.progettoRogueLike.Factory.InventoryFactory;
-import com.progettoRogueLike.Factory.RoomFactory;
+import com.progettoRogueLike.factory.CharacterFactory;
+import com.progettoRogueLike.factory.InventoryFactory;
+import com.progettoRogueLike.factory.RoomFactory;
 import com.progettoRogueLike.model.Dungeon;
 import com.progettoRogueLike.model.character.Hero;
 import com.progettoRogueLike.model.character.Monster;
