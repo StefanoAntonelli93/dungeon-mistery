@@ -1,7 +1,5 @@
 package com.progettoRogueLike.model.room;
 
-import com.progettoRogueLike.interfaces.RoomCategory;
-import com.progettoRogueLike.model.character.Hero;
 import com.progettoRogueLike.enums.Direction;
 import lombok.*;
 
@@ -12,10 +10,9 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Room implements RoomCategory {
+public class Room {
     private Integer id;
     private String name;
-    private RoomCategory category;
 
     @ToString.Exclude
     Map<Direction, Room> connections = new HashMap<>();
@@ -29,8 +26,4 @@ public class Room implements RoomCategory {
         return connections.get(direction);
     }
 
-    @Override
-    public void enter(Hero hero, Room room){
-        System.out.println("Sei entrato in una room");
-    }
 }

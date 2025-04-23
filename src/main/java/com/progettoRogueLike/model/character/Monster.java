@@ -2,30 +2,40 @@ package com.progettoRogueLike.model.character;
 
 import com.progettoRogueLike.model.room.Room;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.SuperBuilder;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
-@SuperBuilder
-public class Monster extends GameCharacter {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Monster {
+    private int id;
+    private String name;
+    private int hp;
 
-    // id name hp
+    public Monster(String name, int hp, int level, int strength, int defense, String type, Room currentRoom) {
+        this.name = name;
+        this.hp = hp;
+        this.level = level;
+        this.strength = strength;
+        this.defense = defense;
+        this.type = type;
+        this.currentRoom = currentRoom;
+    }
+
+    private int level;
+    private int strength;
+    private int defense;
+    private String type;
     private Room currentRoom;
 
-    @Override
     public void getStatus() {
-        System.out.println("Monster Status => " +
-                "Name: " + name +
-                ", HP: " + hp);
+        System.out.println("Monster Status => "
+                + "Name: " + name
+                + ", HP: " + hp
+                + ", Level: " + level
+                + ", Strength: " + strength
+                + ", Defense: " + defense
+                + ", Type: " + type);
     }
-    
-    @Override
-    public void attack(GameCharacter character) {
-        System.out.println(name + " attacks!");
-    }
-    public void attack(Hero hero) {
-        System.out.println(name + " attacks: " + hero.getName());
-    }
-
 }
